@@ -1,17 +1,27 @@
 ActiveAdmin.register Course do
+	permit_params :coursename, :teacher, :start_date, :end_date
+	menu :priority => 2
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
+	index do
+		selectable_column
+		id_column
+		column "Course name", :coursename
+		column "Teacher", :teacher
+		column "Enrolled students", :enrolled_sutdents
+		column "Start date", :start_date
+		column "End date", :end_date
+		column :created_at
+		column :updated_at
+		actions
+	end
 
-
+	form do |f|
+    	f.inputs "New course" do
+	      f.input :coursename
+	      f.input :teacher
+	      f.input :start_date, as: :datepicker
+	      f.input :end_date, as: :datepicker
+        end
+        f.actions
+  	end
 end
