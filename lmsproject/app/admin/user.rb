@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   menu :priority => 3
-  permit_params :username, :first_name, :last_name, :email, :password, :password_confirmation
+  permit_params :username, :first_name, :last_name, :email, :password, :password_confirmation, :courses
 
   index do
     selectable_column
@@ -12,6 +12,7 @@ ActiveAdmin.register User do
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
+    column :course
     actions
   end
 

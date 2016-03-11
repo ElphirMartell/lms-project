@@ -1,5 +1,5 @@
 ActiveAdmin.register Course do
-	permit_params :coursename, :teacher, :start_date, :end_date
+	permit_params :coursename, :teacher, :start_date, :end_date, :user
 	menu :priority => 2
 
 	index do
@@ -12,6 +12,7 @@ ActiveAdmin.register Course do
 		column "End date", :end_date
 		column :created_at
 		column :updated_at
+		column :user
 		actions
 	end
 
