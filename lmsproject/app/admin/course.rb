@@ -2,6 +2,8 @@ ActiveAdmin.register Course do
 	permit_params :coursename, :teacher, :start_date, :end_date, :user
 	menu :priority => 2
 
+	teachers = User.all.select { |user| user.teacher? == true }
+
 	index do
 		selectable_column
 		id_column
@@ -12,14 +14,15 @@ ActiveAdmin.register Course do
 		column "End date", :end_date
 		column :created_at
 		column :updated_at
-		column :user
 		actions
 	end
 
+
 	form do |f|
     	f.inputs "New course" do
+    	  teachers.map do |teacher| teacher.username end
 	      f.input :coursename
-	      f.input :teacher
+	      f.input  :teacher, collection: teachers.map do |teacher| teacher.username end
 	      f.input :start_date, as: :datepicker
 	      f.input :end_date, as: :datepicker
         end
