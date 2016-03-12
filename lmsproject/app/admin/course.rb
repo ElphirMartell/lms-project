@@ -1,15 +1,16 @@
 ActiveAdmin.register Course do
-	permit_params :coursename, :teacher, :start_date, :end_date, :user
+	permit_params :coursename, :teacher, :start_date, :end_date, :user, :course_id
 	menu :priority => 2
 
-	teachers = User.all.select { |user| user.teacher? == true }
+	teachers = User.where(teacher: true)
+	enrolled_students = Enrollment.all
 
 	index do
 		selectable_column
 		id_column
-		column "Course name", :coursename
+		column "Coursename", :coursename
 		column "Teacher", :teacher
-		column "Enrolled students", :enrolled_sutdents
+		column "Enrolled students", :enrollment do |course| Enrollment.where(course_id: course.id).count end
 		column "Start date", :start_date
 		column "End date", :end_date
 		column :created_at
