@@ -17,6 +17,7 @@ ActiveAdmin.register Course do
 		column :updated_at
 		actions
 	end
+	
 
 
 	form do |f|
