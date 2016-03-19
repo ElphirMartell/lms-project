@@ -8,7 +8,9 @@ ActiveAdmin.register Course do
 	index do
 		selectable_column
 		id_column
-		column "Coursename", :coursename
+		column "Coursename", :coursename do |course|
+			link_to course.coursename, course_path(course.id)
+		end
 		column "Teacher", :teacher
 		column "Enrolled students", :enrollment do |course| Enrollment.where(course_id: course.id).count end
 		column "Start date", :start_date

@@ -1,5 +1,5 @@
 class CoursesController < InheritedResources::Base
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :set_course, only: [:show, :edit, :update, :destroy]
 
   # GET /courses
   # GET /courses.json

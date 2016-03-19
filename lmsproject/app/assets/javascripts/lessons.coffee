@@ -5,7 +5,7 @@ $ ->
 
   # to set summernote object
   # You should change '#post_content' to your textarea input id
-  summer_note = $('#post_content')
+  summer_note = $('#lesson_body')
 
   # to call summernote editor
   summer_note.summernote
@@ -22,6 +22,6 @@ $ ->
 
   # to get code for summernote
   summer_note.closest('form').submit ->
-    # alert $('#post_content').code()
+    # alert $('#lesson_content').code()
     summer_note.val summer_note.code()
     true

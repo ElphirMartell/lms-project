@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= bootstrap-sprockets
+//= require bootstrap
+//= require summernote
 //= require_tree .
+
 
