@@ -10,7 +10,9 @@ class LessonsController < InheritedResources::Base
   # GET /lessons/1
   # GET /lessons/1.json
   def show
-  	
+  	@lessons = Lesson.all
+  	@course = Course.find(params[:course_id])
+  	@lesson = Lesson.find(params[:id])
   end
 
   # GET /lessons/new
@@ -26,11 +28,12 @@ class LessonsController < InheritedResources::Base
   # POST /lessons
   # POST /lessons.json
   def create
+  	@course = Course.find(params[:course_id])
     @lesson = Lesson.new(lesson_params)
 
     respond_to do |format|
       if @lesson.save
-        format.html { redirect_to @lesson, notice: 'lesson was successfully created.' }
+        format.html { redirect_to @course, notice: 'lesson was successfully created.' }
         format.json { render :show, status: :created, location: @lesson }
       else
         format.html { render :new }
@@ -65,12 +68,12 @@ class LessonsController < InheritedResources::Base
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_lesson
-      @lesson = lesson.find(params[:id])
+    def set_Lesson
+      @lesson = Lesson.find(params[:id])
     end
 
     def lesson_params
-      params.require(:lesson).permit(:lesson_id, :title, :body)
+      params.require(:lesson).permit(:id, :title, :body)
     end
 end
 

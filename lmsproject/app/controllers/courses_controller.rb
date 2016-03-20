@@ -10,7 +10,13 @@ class CoursesController < InheritedResources::Base
   # GET /courses/1
   # GET /courses/1.json
   def show
+  	if Lesson.all.count >= 1
+  		@lessons = Lesson.all
+  		@lesson = Lesson.new
+  	end
+
   end
+
 
   # GET /courses/new
   def new

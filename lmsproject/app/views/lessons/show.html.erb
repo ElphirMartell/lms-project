@@ -1,4 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
-<%= link_to 'Back', lessons_path %>
+<h1 class="text-center"><%= @lesson.title %></h1>
+
+<div class="col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+    <%= render 'sidebar' %>
+</div>
+
+<div class="col-sm-8">
+	<%= @lesson.body %>
+</div>
+
